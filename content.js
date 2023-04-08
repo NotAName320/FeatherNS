@@ -31,7 +31,7 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 				if (window.location.href.includes("page=join_WA")) {
 					document.getElementsByClassName('button primary icon approve big')[0].click();
 				}
-				if (window.location.href.includes("page=un?welcome=1")) {
+				else {
 					navigator.clipboard.writeText(document.getElementsByClassName('bellink quietlink')[0].href)
 				}
 				break;
