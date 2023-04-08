@@ -51,6 +51,8 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 				if (window.location.href == "https://www.nationstates.net/page=un") {
 					var chk = document.getElementsByName('chk')[0].value;
 					window.location.assign(`https://www.nationstates.net/page=UN_status?action=leave_un&submit=1&chk=${chk}`);
+				} else if (window.location.href.includes("page=UN_status?action=leave_un")) {
+					close();
 				} else {
 					window.location.assign("https://www.nationstates.net/page=un");
 				}
