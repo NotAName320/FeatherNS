@@ -3,7 +3,7 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 		return;
 	} else {
 		switch (event.code) { // event.code is the key that was pressed
-			case 'KeyA': // reload page
+			case 'KeyR': // reload page
 				window.location.reload();
 				break;
 			case 'KeyQ': // go back
@@ -27,9 +27,12 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 					document.getElementsByName('eject')[0].click();
 				}
 				break;
-			case 'KeyR': // confirm wa join
+			case 'KeyA': // confirm wa join
 				if (window.location.href.includes("page=join_WA")) {
 					document.getElementsByClassName('button primary icon approve big')[0].click();
+				}
+				if (window.location.href.includes("page=un?welcome=1")) {
+					navigator.clipboard.writeText(document.getElementsByClassName('bellink quietlink')[0].href)
 				}
 				break;
 			case 'KeyF': // move to region whose page you're currently on
@@ -44,9 +47,10 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 					window.location.assign("https://www.nationstates.net/region=suspicious");
 				}
 				break;
-			case 'KeyE': // apply/resign to WA
+			case 'KeyE': // resign from WA
 				if (window.location.href == "https://www.nationstates.net/page=un") {
-					document.getElementsByClassName('button icon')[1].click();
+					var chk = document.getElementsByName('chk')[0].value;
+					window.location.assign(`https://www.nationstates.net/page=UN_status?action=leave_un&submit=1&chk=${chk}`);
 				} else {
 					window.location.assign("https://www.nationstates.net/page=un");
 				}
@@ -58,11 +62,6 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 					document.getElementById('panelregionbar').querySelector('a').click();
 				}
 				break;
-			case 'KeyV': // Copy the current nation to the clipboard
-				var NationLink = document.getElementsByClassName("bellink quietlink");
-				var NationURL = NationLink[0].href;
-				navigator.clipboard.writeText(NationURL);
-				break;
 			case 'KeyD': // appoint yourself as and/or deappoint ROs
 				var current_nation = document.getElementById("loggedin").getAttribute("data-nname");
 				// If on the regional control page, open own regional officer page
@@ -71,7 +70,7 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 				}
 				// If on on own regional officer page, assign officer role
 				else if (window.location.href == "https://www.nationstates.net/page=regional_officer/nation=" + current_nation) {
-					document.getElementsByName("office_name")[0].value = "Raider Unity";
+					document.getElementsByName("office_name")[0].value = "moxxie cultist";
 					document.getElementsByName("authority_A")[0].checked = true;
 					document.getElementsByName("authority_C")[0].checked = true;
 					document.getElementsByName("authority_E")[0].checked = true;
