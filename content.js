@@ -29,7 +29,9 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 				break;
 			case 'KeyA': // confirm wa join
 				if (window.location.href.includes("page=join_WA")) {
-					document.getElementsByClassName('button primary icon approve big')[0].click();
+					var NationURL = document.getElementsByTagName("form")[1].getElementsByClassName("nlink")[0].href;
+					navigator.clipboard.writeText(NationURL);
+					document.getElementsByClassName('button primary icon approve big')[0].click();				
 				}
 				else {
 					navigator.clipboard.writeText(document.getElementsByClassName('bellink quietlink')[0].href)
@@ -51,8 +53,6 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 				if (window.location.href == "https://www.nationstates.net/page=un") {
 					var chk = document.getElementsByName('chk')[0].value;
 					window.location.assign(`https://www.nationstates.net/page=UN_status?action=leave_un&submit=1&chk=${chk}`);
-				} else if (window.location.href.includes("page=UN_status?action=leave_un")) {
-					close();
 				} else {
 					window.location.assign("https://www.nationstates.net/page=un");
 				}
@@ -79,9 +79,19 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 					document.getElementsByName("authority_P")[0].checked = true;
 					document.getElementsByName('editofficer')[0].click();
 				}
-				// If on someone else's regional officer page, dismiss them
+				// If on someone else's regional officer page, dismiss them/remove all their powers if successor
 				else if (window.location.href.includes("regional_officer")) {
-					document.getElementsByName('abolishofficer')[0].click();
+					if(document.getElementsByName("authority_S")[0].checked) {
+						document.getElementsByName("authority_A")[0].checked = false;
+						document.getElementsByName("authority_B")[0].checked = false;
+						document.getElementsByName("authority_C")[0].checked = false;
+						document.getElementsByName("authority_E")[0].checked = false;
+						document.getElementsByName("authority_P")[0].checked = false;
+						document.getElementsByName('editofficer')[0].click();
+					} else {
+						document.getElementsByName('abolishofficer')[0].click();
+					}
+					
 				}
 				// If on none of these pages, open regional control page
 				else {
