@@ -38,7 +38,8 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 				break;
 			case 'KeyF': // move to region whose page you're currently on
 				if (window.location.href.includes("region=")) {
-					document.getElementsByName('move_region')[0].click();
+					if (document.getElementsByName('move_region').length == 0) window.location.reload();
+					else document.getElementsByName('move_region')[0].click();
 				} else if (window.location.href.includes("change_region")) {
 					document.getElementsByClassName('rlink')[0].click();
 				}
