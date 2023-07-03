@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "NotaFeather",
+  "version": "3.2",
+  "description": "Feather, fork of SweezeBreeze tailored for usage with TBH. (forked by nota for his own use)",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions" : [
+      "contextMenus",
+      "clipboardWrite"      
+  ],
+  "content_scripts": [{
+    "matches": [
+      "https://*.nationstates.net/*"
+    ],
+    "js": [
+      "content.js"
+    ]
+  }]
+}
