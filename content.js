@@ -72,7 +72,7 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 				}
 				// If on on own regional officer page, assign officer role
 				else if (window.location.href == "https://www.nationstates.net/page=regional_officer/nation=" + current_nation) {
-					document.getElementsByName("office_name")[0].value = "moxxie cultist";
+					document.getElementsByName("office_name")[0].value = "detag";
 					document.getElementsByName("authority_A")[0].checked = true;
 					document.getElementsByName("authority_C")[0].checked = true;
 					document.getElementsByName("authority_E")[0].checked = true;
