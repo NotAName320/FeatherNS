@@ -32,14 +32,16 @@ document.addEventListener('keyup', function (event) { // keyup may seem less int
 					var NationURL = document.getElementsByTagName("form")[1].getElementsByClassName("nlink")[0].href;
 					navigator.clipboard.writeText(NationURL);
 					document.getElementsByClassName('button primary icon approve big')[0].click();				
-				}
-				else {
+				} else {
 					navigator.clipboard.writeText(document.getElementsByClassName('bellink quietlink')[0].href)
 				}
 				break;
 			case 'KeyF': // move to region whose page you're currently on
 				if (window.location.href.includes("region=")) {
-					document.getElementsByName('move_region')[0].click();
+					if (document.getElementsByName('move_region').length == 0) window.location.reload();
+					else document.getElementsByName('move_region')[0].click();
+				} else if (window.location.href.includes("change_region")) {
+					document.getElementsByClassName('rlink')[0].click();
 				}
 				break;
 			case 'KeyB': // move to suspicious
